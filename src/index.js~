@@ -7,6 +7,11 @@ const buttonList = []
 const $root = document.querySelector('#app')
 $root.className = 'layout'
 
+const header = document.createElement('h1')
+header.className = 'header'
+header.textContent = 'Weather sounds'
+$root.append(header)
+
 const buttonsContainer = document.createElement('div')
 buttonsContainer.className = 'buttons-container'
 $root.append(buttonsContainer)
@@ -19,7 +24,7 @@ $volumeControl.max = 1
 $volumeControl.step = 0.01
 $volumeControl.className = 'volume'
 $volumeControl.addEventListener('input', event => {
-  audioList.forEach(item => item.volume = event.target.value)
+  buttonList.map(buttonObj => buttonObj.audio).forEach(item => item.volume = event.target.value)
 })
 $root.append($volumeControl)
 
@@ -35,23 +40,22 @@ function renderItem(button) {
   const $iconDefault = document.createElement('img')
   $iconDefault.src = button.icon
   $iconDefault.alt = button.title
-  $iconDefault.className = 'icon-default'
+  $iconDefault.className = 'icon'
   buttonObject.iconDefault = $iconDefault
 
   const $iconPause = document.createElement('img')
   $iconPause.src = pauseIcon
   $iconPause.alt = 'пауза'
-  $iconPause.className = 'icon-pause d-none'
+  $iconPause.className = 'icon d-none'
   buttonObject.iconPause = $iconPause
 
   const $el = document.createElement('div')
-  $el.className = `button ${button.title}` // описать класс title для отрисовки фона
-  // $el.style.backgroundImage = `url(${button.backgroundImage})`
+  $el.className = `button ${button.title}`
   $el.append($iconDefault, $iconPause)
   buttonObject.el = $el
 
   $el.addEventListener('click', () => {
-    buttonsContainer.style.backgroundImage = `url(${ button.backgroundImage })`
+    $root.className = `layout ${button.title}`
 
     for (let btn of buttonList) {
       if (btn.id === buttonObject.id) {
