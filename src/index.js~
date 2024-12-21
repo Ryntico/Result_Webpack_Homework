@@ -36,16 +36,9 @@ function renderItem(button) {
 
   $el.addEventListener('click', () => {
     buttonsContainer.style.backgroundImage = `url(${button.backgroundImage})`
-    
-    const buttonList = Array.from(buttonHTMLCollection)
-    buttonList.filter(but => but !== $el).forEach(but => {
-      but.style.backgroundImage = `url(${but.backgroundImage})`
-    })
-    
     audioList.filter(item => item !== audio).forEach(item => {
       if(!item.paused) item.pause()
     })
-    
     if (audio.paused) {
       audio.play()
       $el.innerHTML = `<img src="${pauseIcon}" alt="пауза" />`
