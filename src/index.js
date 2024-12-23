@@ -24,7 +24,7 @@ $volumeControl.max = 1
 $volumeControl.step = 0.01
 $volumeControl.className = 'volume'
 $volumeControl.addEventListener('input', event => {
-  buttonList.map(buttonObj => buttonObj.audio).forEach(item => item.volume = event.target.value)
+  buttonList.forEach(buttonObj => buttonObj.audio.volume = event.target.value)
 })
 $root.append($volumeControl)
 
@@ -78,8 +78,8 @@ function renderItem(button) {
       }
     }
 
-    buttonList.map(button => button.audio).filter(audio => audio !== $audio).forEach(audio => {
-      if (!audio.paused) audio.pause()
+    buttonList.filter(buttonObj => buttonObj.audio !== $audio).forEach(buttonObj => {
+      if (!buttonObj.audio.paused) buttonObj.audio.pause()
     })
   })
   buttonsContainer.append($el)
