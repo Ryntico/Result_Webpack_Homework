@@ -73,36 +73,8 @@ body {
   }
 }
 
-.rain::before {
-  transition-duration: 1s;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  z-index: -1;
-  background-image: url('../rainy-bg.jpg');
-}
-
-.summer::before {
-  transition-duration: 1s;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  z-index: -1;
-  background-image: url('../summer-bg.jpg');
-}
-
+.rain::before,
+.summer::before,
 .winter::before {
   transition-duration: 1s;
   content: '';
@@ -115,6 +87,17 @@ body {
   background-position: center;
   filter: blur(10px);
   z-index: -1;
+}
+
+.rain::before {
+  background-image: url('../rainy-bg.jpg');
+}
+
+.summer::before {
+  background-image: url('../summer-bg.jpg');
+}
+
+.winter::before {
   background-image: url('../winter-bg.jpg');
 }
 

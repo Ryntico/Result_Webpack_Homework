@@ -7,14 +7,14 @@ const buttonList = []
 const $root = document.querySelector('#app')
 $root.className = 'layout'
 
-const header = document.createElement('h1')
-header.className = 'header'
-header.textContent = 'Weather sounds'
-$root.append(header)
+const $header = document.createElement('h1')
+$header.className = 'header'
+$header.textContent = 'Weather sounds'
+$root.append($header)
 
-const buttonsContainer = document.createElement('div')
-buttonsContainer.className = 'buttons-container'
-$root.append(buttonsContainer)
+const $buttonsContainer = document.createElement('div')
+$buttonsContainer.className = 'buttons-container'
+$root.append($buttonsContainer)
 
 const $volumeControl  = document.createElement('input')
 $volumeControl.type = 'range'
@@ -82,7 +82,7 @@ function renderItem(button) {
       if (!buttonObj.audio.paused) buttonObj.audio.pause()
     })
   })
-  buttonsContainer.append($el)
+  $buttonsContainer.append($el)
 }
 
 buttons.forEach(renderItem)
