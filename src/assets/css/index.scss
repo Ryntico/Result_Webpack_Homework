@@ -18,8 +18,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  filter: blur();
-  background-color: darkolivegreen;
 
   .header {
     font-size: 3rem;
@@ -27,6 +25,20 @@ body {
     color: #ed4700;
     text-shadow: 1px 1px 1px #000;
   }
+
+  //.header::before {
+  //  transition-duration: 1s;
+  //  content: '';
+  //  position: absolute;
+  //  top: 0;
+  //  left: 0;
+  //  width: 100%;
+  //  height: 100%;
+  //  background-size: cover;
+  //  background-position: center;
+  //  opacity: 0.2;
+  //  filter: blur(10px)
+  //}
 
   .buttons-container {
     display: flex;
@@ -75,7 +87,8 @@ body {
 
 .rain::before,
 .summer::before,
-.winter::before {
+.winter::before,
+.default::before {
   transition-duration: 1s;
   content: '';
   position: absolute;
@@ -99,5 +112,9 @@ body {
 
 .winter::before {
   background-image: url('../winter-bg.jpg');
+}
+
+.default::before {
+  background-image: url('../default-bg.png');
 }
 
