@@ -24,12 +24,13 @@ export function createVolumeControl(audioList) {
   return $volumeControl
 }
 
-export function createObjectOfWeatherButtonsListAndButtonsAudioList(layoutClassNameSetter) {
+export function CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(layoutClassNameSetter) {
+  this.audioList = []
+
+  this.$buttonsContainer = document.createElement('div')
+  this.$buttonsContainer.className = 'buttons-container'
+
   const buttonList = []
-
-  const $buttonsContainer = document.createElement('div')
-  $buttonsContainer.className = 'buttons-container'
-
   buttons.forEach(button => {
     try {
       if (!isFileExistsOnUrl(button.sound)) return
@@ -39,6 +40,7 @@ export function createObjectOfWeatherButtonsListAndButtonsAudioList(layoutClassN
       const $audio = new Audio(button.sound)
       $audio.loop = true
       buttonObject.audio = $audio
+      this.audioList.push($audio)
 
       const $iconDefault = document.createElement('img')
       $iconDefault.src = button.icon
@@ -85,11 +87,9 @@ export function createObjectOfWeatherButtonsListAndButtonsAudioList(layoutClassN
           if (!buttonObj.audio.paused) buttonObj.audio.pause()
         })
       })
-      $buttonsContainer.append($el)
+      this.$buttonsContainer.append($el)
     } catch (e) {
       console.log('Some error during creating buttons', e)
     }
   })
-
-  return {$buttonsContainer, audioList: buttonList.map(button => button.audio)}
 }

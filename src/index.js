@@ -1,15 +1,15 @@
 import './assets/css/index.scss'
 import { layoutRender, setLayoutClassName } from './layoutRender'
-import { createHeader, createVolumeControl, createObjectOfWeatherButtonsListAndButtonsAudioList } from './creates'
+import { createHeader, createVolumeControl, CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor } from './creates'
 
 const $root = document.querySelector('#app')
 
 const $header = createHeader()
-const buttonsAndAudioList =  createObjectOfWeatherButtonsListAndButtonsAudioList(setLayoutClassName)
-const $buttons = buttonsAndAudioList.$buttonsContainer
-const $volumeControl = createVolumeControl(buttonsAndAudioList.audioList)
+const ButtonsAndAudioList =
+  new CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(setLayoutClassName)
+const $volumeControl = createVolumeControl(ButtonsAndAudioList.audioList)
 
-layoutRender($root, [$header, $buttons, $volumeControl])
+layoutRender($root, [$header, ButtonsAndAudioList.$buttonsContainer, $volumeControl])
 
 
 
