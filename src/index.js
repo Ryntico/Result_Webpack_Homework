@@ -1,15 +1,16 @@
 import './assets/css/index.scss'
-import { layoutRender, setLayoutClassName } from './layoutRender'
-import { createHeader, createVolumeControl, CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor } from './creates'
+import { ButtonsContent } from './components/ButtonsContent'
+import { LayoutCreator } from './components/LayoutCreator'
+import { HeaderCreator } from './components/HeaderCreator'
+import { VolumeControl } from './components/VolumeControl'
+
+const Layout = new LayoutCreator()
+const HeaderInstance = new HeaderCreator()
+const Buttons = new ButtonsContent(Layout.setLayoutClassName)
+const Volume = new VolumeControl(Buttons.getAudioList())
 
 const $root = document.querySelector('#app')
-
-const $header = createHeader()
-const ButtonsAndAudioList =
-  new CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(setLayoutClassName)
-const $volumeControl = createVolumeControl(ButtonsAndAudioList.audioList)
-
-layoutRender($root, [$header, ButtonsAndAudioList.$buttonsContainer, $volumeControl])
+Layout.render($root, [HeaderInstance, Buttons, Volume])
 
 
 

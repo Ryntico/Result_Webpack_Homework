@@ -1,30 +1,8 @@
-import { buttons, pauseIcon } from './data'
-import { isFileExistsOnUrl } from './accessoriesEntities'
+import { buttons, pauseIcon } from '../data'
+import { isFileExistsOnUrl } from '../accessoriesEntities'
 
-export function createHeader() {
-  const $header = document.createElement('h1')
-  $header.className = 'header'
-  $header.textContent = 'Weather sounds'
 
-  return $header
-}
-
-export function createVolumeControl(audioList) {
-  const $volumeControl = document.createElement('input')
-  $volumeControl.type = 'range'
-  $volumeControl.value = '1'
-  $volumeControl.min = '0'
-  $volumeControl.max = '1'
-  $volumeControl.step = '0.01'
-  $volumeControl.className = 'volume'
-  $volumeControl.addEventListener('input', event => {
-    audioList.forEach(audio => audio.volume = event.target.value)
-  })
-
-  return $volumeControl
-}
-
-export function CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(layoutClassNameSetter) {
+export function ButtonsContent(layoutClassNameSetter) {
   this.audioList = []
 
   this.$buttonsContainer = document.createElement('div')
@@ -60,7 +38,7 @@ export function CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(l
       buttonObject.el = $el
 
       $el.addEventListener('click', () => {
-        layoutClassNameSetter(`layout ${ button.title }`)
+        layoutClassNameSetter && layoutClassNameSetter(`layout ${ button.title }`)
 
         for (let btn of buttonList) {
           if (btn.id === buttonObject.id) {
@@ -72,7 +50,7 @@ export function CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(l
               btn.audio.pause()
               btn.iconDefault.classList.remove('d-none')
               btn.iconPause.classList.add('d-none')
-              layoutClassNameSetter(`layout default`)
+              layoutClassNameSetter && layoutClassNameSetter(`layout default`)
             }
           } else {
             if (!btn.audio.paused) {
@@ -92,4 +70,7 @@ export function CreateObjectOfWeatherButtonsListAndButtonsAudioListConstructor(l
       console.log('Some error during creating buttons', e)
     }
   })
+
+  this.render = () => this.$buttonsContainer
+  this.getAudioList = () => this.audioList
 }
