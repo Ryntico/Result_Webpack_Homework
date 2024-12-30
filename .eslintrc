@@ -1,6 +1,9 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "env": {
-    "browser": true
+    "browser": true,
+    "es2021": true
   },
   "parserOptions": {
     "ecmaVersion": 2020,

@@ -1,4 +1,4 @@
-export function isFileExistsOnUrl(url) {
+export function isFileExistsOnUrl(url: string): boolean {
   const xhr = new XMLHttpRequest()
   xhr.open('HEAD', url, false) // синхронный запрос
   try {

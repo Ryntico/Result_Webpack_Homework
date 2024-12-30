@@ -8,7 +8,6 @@ export class LayoutCreator {
   }
 
   constructor() {
-    this.setLayoutClassName = this.setLayoutClassName.bind(this)
     this.setLayoutClassName('layout default')
   }
 

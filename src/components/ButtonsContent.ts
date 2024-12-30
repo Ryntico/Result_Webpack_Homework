@@ -22,26 +22,23 @@ export class ButtonsContent implements Component {
       $audio.loop = true
       this.audioList.push($audio)
 
-      const createIcon = (src: string, alt: string, additionalClass: string = '') => {
-        const $icon = document.createElement('img')
-        $icon.src = src
-        $icon.alt = alt
+      const createIcon = (additionalClass: string = '') => {
+        const $icon = document.createElement('span')
         $icon.className = `icon ${additionalClass}`
         return $icon
       }
 
-      const $iconDefault = createIcon(button.icon, button.title)
-      const $iconPause = createIcon(pauseIcon, 'пауза', 'd-none')
+      const $iconDefault = createIcon(`${button.title}-icon`)
 
       const $buttonElement = document.createElement('div')
       $buttonElement.className = `button ${button.title}`
-      $buttonElement.append($iconDefault, $iconPause)
+      $buttonElement.append($iconDefault)
 
       const buttonObject: ButtonObject = {
         id: button.id,
+        title: button.title,
         audio: $audio,
         iconDefault: $iconDefault,
-        iconPause: $iconPause,
         el: $buttonElement
       }
 
@@ -56,18 +53,18 @@ export class ButtonsContent implements Component {
           if (isCurrent) {
             if (btn.audio.paused) {
               btn.audio.play()
-              btn.iconDefault.classList.add('d-none')
-              btn.iconPause.classList.remove('d-none')
+              btn.iconDefault.classList.remove(`${button.title}-icon`)
+              btn.iconDefault.classList.add('pause-icon')
             } else {
               btn.audio.pause()
-              btn.iconDefault.classList.remove('d-none')
-              btn.iconPause.classList.add('d-none')
+              btn.iconDefault.classList.remove('pause-icon')
+              btn.iconDefault.classList.add(`${button.title}-icon`)
               layoutClassNameSetter?.('layout default')
             }
           } else if (!btn.audio.paused) {
             btn.audio.pause()
-            btn.iconDefault.classList.remove('d-none')
-            btn.iconPause.classList.add('d-none')
+            btn.iconDefault.classList.remove('pause-icon')
+            btn.iconDefault.classList.add(`${btn.title}-icon`)
           }
         })
       })

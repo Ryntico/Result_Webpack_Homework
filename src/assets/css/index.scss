@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Roboto';
-  src: url('../../fonts/Roboto-Regular.ttf') format('truetype');
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 body {
@@ -47,31 +47,61 @@ body {
       position: relative;
       border-radius: 1rem;
 
-      .icon{
+      .icon {
         width: 5rem;
         height: 5rem;
+        position: relative;
+
+        &.rain-icon::before,
+        &.summer-icon::before,
+        &.winter-icon::before,
+        &.pause-icon::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        &.rain-icon::before {
+          background-image: url('../icons/cloud-rain.svg');
+        }
+
+        &.summer-icon::before {
+          background-image: url('../icons/sun.svg');
+        }
+
+        &.winter-icon::before {
+          background-image: url('../icons/cloud-snow.svg');
+        }
+
+        &.pause-icon::before {
+          background-image: url('../icons/pause.svg');
+        }
       }
     }
-
-    .rain {
-      background-image: url('../rainy-bg.jpg');
-    }
-
-    .summer {
-      background-image: url('../summer-bg.jpg');
-    }
-
-    .winter {
-      background-image: url('../winter-bg.jpg');
-    }
-
   }
 
-  .volume {
-    width: 10rem;
-    margin: 2rem auto;
-    cursor: pointer;
+  .rain {
+    background-image: url('../rainy-bg.jpg');
   }
+
+  .summer {
+    background-image: url('../summer-bg.jpg');
+  }
+
+  .winter {
+    background-image: url('../winter-bg.jpg');
+  }
+}
+
+.volume {
+  width: 10rem;
+  margin: 2rem auto;
+  cursor: pointer;
 }
 
 .rain::before,
@@ -106,4 +136,3 @@ body {
 .default::before {
   background-image: url('../default-bg.png');
 }
-
