@@ -1,13 +1,15 @@
-export function LayoutCreator() {
-  this.$mainContainer = document.createElement('div')
+export class LayoutCreator {
+  constructor() {
+    this.$mainContainer = document.createElement('div')
 
-  this.setLayoutClassName = (className) => {
-    this.$mainContainer.className = className
+    this.setLayoutClassName = (className) => {
+      this.$mainContainer.className = className
+    }
+
+    this.setLayoutClassName('layout default')
   }
 
-  this.setLayoutClassName('layout default')
-
-  this.render = ($container, elementsForRender = []) => {
+  render($container, elementsForRender = []) {
     if (!$container || !(elementsForRender instanceof Array)) {
       throw new Error('Invalid arguments: $container must be a DOM element and elementsForRender must be an array.')
     }

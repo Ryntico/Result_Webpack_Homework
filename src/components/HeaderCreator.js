@@ -1,8 +1,15 @@
-export function HeaderCreator() {
-  this.$header = Object.assign(document.createElement('h1'), {
-    className: 'header',
-    textContent: 'Weather sounds',
-  })
+import { Component } from '../abstractions/Component'
 
-  this.render = () => this.$header
+export class HeaderCreator extends Component {
+  constructor() {
+    super()
+    this.$header = Object.assign(document.createElement('h1'), {
+      className: 'header',
+      textContent: 'Weather sounds',
+    })
+  }
+
+  render() {
+    return this.$header
+  }
 }

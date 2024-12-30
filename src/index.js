@@ -5,12 +5,12 @@ import { HeaderCreator } from './components/HeaderCreator'
 import { VolumeControl } from './components/VolumeControl'
 
 const Layout = new LayoutCreator()
-const HeaderInstance = new HeaderCreator()
+const Header = new HeaderCreator()
 const Buttons = new ButtonsContent(Layout.setLayoutClassName)
 const Volume = new VolumeControl(Buttons.getAudioList())
 
 const $root = document.querySelector('#app')
-Layout.render($root, [HeaderInstance, Buttons, Volume])
+Layout.render($root, [Header, Buttons, Volume])
 
 
 
