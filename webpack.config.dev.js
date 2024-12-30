@@ -6,7 +6,7 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   plugins: [
     new ESLintPlugin({
-      extensions: ['js'],
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
     }),
   ],
   devtool: 'inline-source-map',

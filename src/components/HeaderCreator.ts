@@ -1,15 +1,15 @@
 import { Component } from '../abstractions/Component'
 
-export class HeaderCreator extends Component {
+export class HeaderCreator implements Component {
+  private $header: HTMLElement
   constructor() {
-    super()
     this.$header = Object.assign(document.createElement('h1'), {
       className: 'header',
       textContent: 'Weather sounds',
     })
   }
 
-  render() {
+  render(): HTMLElement {
     return this.$header
   }
 }
