@@ -1,4 +1,4 @@
-import {Component} from '../abstractions/Component'
+import {Component} from '../interfaces/Component'
 
 export class VolumeControl implements Component {
   private $volumeControl: HTMLInputElement

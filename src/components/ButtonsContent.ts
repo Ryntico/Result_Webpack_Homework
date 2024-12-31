@@ -1,13 +1,19 @@
-import { buttons, pauseIcon } from '../data'
+import { buttons } from '../data'
+import summer from '../assets/sounds/summer.mp3'
+import rain from '../assets/sounds/rain.mp3'
+import winter from '../assets/sounds/winter.mp3'
 import { isFileExistsOnUrl } from '../accessoriesEntities'
-import { Component } from '../abstractions/Component'
-import { ButtonObject } from '../abstractions/ButtonObjectType'
+import { Component } from '../interfaces/Component'
+import { ButtonObject } from '../types/ButtonObjectType'
 
 export class ButtonsContent implements Component {
   private audioList: HTMLAudioElement[]
   private $buttonsContainer: HTMLElement
+  private sounds: { [key: string]: string }
 
   constructor(layoutClassNameSetter?: Function) {
+    this.sounds = {summer, rain, winter}
+
     this.audioList = []
 
     this.$buttonsContainer = document.createElement('div')
@@ -16,9 +22,9 @@ export class ButtonsContent implements Component {
     const buttonList: ButtonObject[] = []
 
     buttons.forEach((button) => {
-      if (!isFileExistsOnUrl(button.sound)) return
+      if (!isFileExistsOnUrl(this.sounds[button.title])) return
 
-      const $audio = new Audio(button.sound)
+      const $audio = new Audio(this.sounds[button.title])
       $audio.loop = true
       this.audioList.push($audio)
 
@@ -39,7 +45,7 @@ export class ButtonsContent implements Component {
         title: button.title,
         audio: $audio,
         iconDefault: $iconDefault,
-        el: $buttonElement
+        el: $buttonElement,
       }
 
       buttonList.push(buttonObject)

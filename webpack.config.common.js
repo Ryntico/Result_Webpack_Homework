@@ -35,6 +35,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.mp3$/,
+        type: 'asset/resource',
+      },
+      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },

@@ -1,4 +1,4 @@
-import {Component} from '../abstractions/Component'
+import {Component} from '../interfaces/Component'
 
 export class LayoutCreator {
   private $mainContainer: HTMLElement = document.createElement('div')
