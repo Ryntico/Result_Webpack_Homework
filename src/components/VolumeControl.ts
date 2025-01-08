@@ -1,10 +1,10 @@
 import {Component} from '../interfaces/Component'
 
 export class VolumeControl implements Component {
-  private $volumeControl: HTMLInputElement
+  #$volumeControl: HTMLInputElement
 
   constructor(audioList: HTMLAudioElement[]) {
-    this.$volumeControl = Object.assign(document.createElement('input'), {
+    this.#$volumeControl = Object.assign(document.createElement('input'), {
       type: 'range',
       value: '1',
       min: '0',
@@ -13,7 +13,7 @@ export class VolumeControl implements Component {
       className: 'volume',
     })
 
-    this.$volumeControl.addEventListener('input', (event) => {
+    this.#$volumeControl.addEventListener('input', (event) => {
       const target = event.target as HTMLInputElement
       const value = target.value
 
@@ -24,6 +24,6 @@ export class VolumeControl implements Component {
   }
 
   render(): HTMLInputElement {
-    return this.$volumeControl
+    return this.#$volumeControl
   }
 }

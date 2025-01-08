@@ -11,9 +11,13 @@
     "module": "commonjs",
     // Устанавливает формат модулей CommonJS, который используется в Node.js.
 
-    "target": "es2022",
+    "target": "ESNext",
     // Определяет версию JavaScript, в которую будет компилироваться код.
-    // В данном случае это ES2022.
+    // В данном случае использует современные возможности JavaScript.
+
+    "useDefineForClassFields": true,
+    // Включает опцию `useDefineForClassFields` в TypeScript.
+    // Это позволяет использовать JS нативное определение полей
 
     "allowJs": true,
     // Позволяет компилятору TypeScript обрабатывать файлы JavaScript (`.js`)

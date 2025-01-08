@@ -7,26 +7,26 @@ import { Component } from '../interfaces/Component'
 import { ButtonObject } from '../types/ButtonObjectType'
 
 export class ButtonsContent implements Component {
-  private audioList: HTMLAudioElement[]
-  private $buttonsContainer: HTMLElement
-  private sounds: { [key: string]: string }
+  #audioList: HTMLAudioElement[]
+  #$buttonsContainer: HTMLElement
+  #sounds: { [key: string]: string }
 
   constructor(layoutClassNameSetter?: Function) {
-    this.sounds = {summer, rain, winter}
+    this.#sounds = {summer, rain, winter}
 
-    this.audioList = []
+    this.#audioList = []
 
-    this.$buttonsContainer = document.createElement('div')
-    this.$buttonsContainer.className = 'buttons-container'
+    this.#$buttonsContainer = document.createElement('div')
+    this.#$buttonsContainer.className = 'buttons-container'
 
     const buttonList: ButtonObject[] = []
 
     buttons.forEach((button) => {
-      if (!isFileExistsOnUrl(this.sounds[button.title])) return
+      if (!isFileExistsOnUrl(this.#sounds[button.title])) return
 
-      const $audio = new Audio(this.sounds[button.title])
+      const $audio = new Audio(this.#sounds[button.title])
       $audio.loop = true
-      this.audioList.push($audio)
+      this.#audioList.push($audio)
 
       const createIcon = (additionalClass: string = '') => {
         const $icon = document.createElement('span')
@@ -75,15 +75,15 @@ export class ButtonsContent implements Component {
         })
       })
 
-      this.$buttonsContainer.append($buttonElement)
+      this.#$buttonsContainer.append($buttonElement)
     })
   }
 
   render() {
-    return this.$buttonsContainer
+    return this.#$buttonsContainer
   }
 
   getAudioList() {
-    return this.audioList
+    return this.#audioList
   }
 }

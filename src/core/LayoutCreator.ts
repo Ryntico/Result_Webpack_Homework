@@ -1,10 +1,10 @@
 import {Component} from '../interfaces/Component'
 
 export class LayoutCreator {
-  private $mainContainer: HTMLElement = document.createElement('div')
+  #$mainContainer: HTMLElement = document.createElement('div')
 
   setLayoutClassName(className: string): void {
-    this.$mainContainer.className = className
+    this.#$mainContainer.className = className
   }
 
   constructor() {
@@ -14,8 +14,8 @@ export class LayoutCreator {
 
   render($container: Element, elementsForRender: Component[] = []) {
     elementsForRender.forEach((element: Component): void => {
-      this.$mainContainer.append(element.render())
+      this.#$mainContainer.append(element.render())
     })
-    $container.append(this.$mainContainer)
+    $container.append(this.#$mainContainer)
   }
 }
