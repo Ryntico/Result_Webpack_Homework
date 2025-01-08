@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npx webpack serve --config webpack.config.dev.js",
     "build": "npx webpack --config webpack.config.prod.js",
-    "bdev": "npx webpack --config webpack.config.dev.js"
+    "build-dev": "npx webpack --config webpack.config.dev.js"
   },
   "author": "Ivan Ryndin",
   "license": "ISC",

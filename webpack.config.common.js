@@ -24,10 +24,6 @@ module.exports = {
           from: path.resolve(__dirname, 'public/favicon.png'),
           to: path.resolve(__dirname, 'dist'),
         },
-        {
-          from: path.resolve(__dirname, 'src/assets/sounds'),
-          to: path.resolve(__dirname, 'dist/assets/sounds'),
-        },
       ],
     }),
     new MiniCssExtractPlugin(),

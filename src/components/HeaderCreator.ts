@@ -2,6 +2,7 @@ import { Component } from '../interfaces/Component'
 
 export class HeaderCreator implements Component {
   private $header: HTMLElement
+
   constructor() {
     this.$header = Object.assign(document.createElement('h1'), {
       className: 'header',
